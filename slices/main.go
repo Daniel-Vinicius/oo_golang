@@ -24,4 +24,23 @@ func main() {
 	slice[0] = 99
 	fmt.Println(slice)
 	fmt.Println(sliceTest)
+
+	sliceString := []string{
+		"Hello",
+		"World",
+		"Much",
+		"Better",
+		"Test",
+	}
+
+	fmt.Println(sliceString)
+
+	// Take all values until position two in this case it will take position 0 and 1 [Hello World]
+	fmt.Println(sliceString[:2])
+
+	// Take all values from position 2 until position 4 (it don't take the fourth position) in this case it will take position 2 and 3 [Much Better]
+	fmt.Println(sliceString[2:4])
+
+	// Take all values from position 2 until last position in this case it will take position 2, 3 and 4 [Much Better Test]
+	fmt.Println(sliceString[2:])
 }
