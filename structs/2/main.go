@@ -2,38 +2,43 @@ package main
 
 import "fmt"
 
-type Car struct {
-	Name  string
-	Year  int
-	Color string
+type Person struct {
+	Name string
+	Age  int
 }
 
-type SuperCar struct {
-	Car
-	Name   string
-	CanFly bool
+type Programmer struct {
+	Person
+	ProgrammingLanguages []string
 }
 
-func (car Car) info() string {
-	return fmt.Sprintf("Car: %v\n Year: %v\n Color: %v", car.Name, car.Year, car.Color)
+func (person Person) IslegalAge() bool {
+	if person.Age >= 18 {
+		return true
+	} else {
+		return false
+	}
 }
 
 func main() {
-	fusca := Car{"Fusca", 2040, "Purple"}
+	daniel := Person{"Daniel Vinícius", 14}
+	programmingLanguages := []string{"Golang", "Javascript"}
 
-	superCar := SuperCar{
-		Car:    fusca,
-		Name:   "Fusca of the future",
-		CanFly: true,
+	programmer := Programmer{
+		Person:               daniel,
+		ProgrammingLanguages: programmingLanguages,
 	}
 
-	fmt.Println(fusca.info())
-	fmt.Println(superCar.info())
-	fmt.Println("Fusca.info() is equal to superCar.info():", fusca.info() == superCar.info())
+	fmt.Println(daniel)
+	fmt.Println(programmer)
 
-	fmt.Println("")
+	fmt.Println(daniel.IslegalAge())
+	fmt.Println(programmer.IslegalAge())
 
-	fmt.Println("CanFly:", superCar.CanFly)
-	fmt.Println("New name:", superCar.Name)
-	fmt.Println("Old name:", superCar.Car.Name)
+	daniel.Age = 19
+	fmt.Println(daniel.IslegalAge())
+	fmt.Println(programmer.IslegalAge())
+
+	programmer.Age = 19
+	fmt.Println(programmer.IslegalAge())
 }
